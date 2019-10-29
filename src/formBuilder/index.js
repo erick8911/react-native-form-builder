@@ -1,7 +1,6 @@
 import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 import { View, Keyboard, Text } from 'react-native';
-import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 import _ from 'lodash';
 import TextInputField from '../fields/textInput';
 import PickerField from '../fields/picker';
@@ -9,6 +8,7 @@ import SwitchField from '../fields/switch';
 import DateField from '../fields/date';
 import SelectField from '../fields/select';
 import FormField from '../fields/form';
+import {KeyboardAvoidingView} from 'react-native';
 import baseTheme from '../theme';
 import { autoValidate, getInitState, getDefaultValue, getResetValue } from '../utils/methods';
 
@@ -365,15 +365,11 @@ export default class FormBuilder extends Component {
   }
   render() {
     return (
-      <KeyboardAwareScrollView
-        keyboardShouldPersistTaps="always"
-        extraScrollHeight={20}
-        {...this.props.scrollViewProps}
-      >
+      <KeyboardAvoidingView enabled>
         <View>
           {this.generateFields() || <View />}
         </View>
-      </KeyboardAwareScrollView>
+      </KeyboardAvoidingView>
 
     );
   }
