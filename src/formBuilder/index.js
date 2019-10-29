@@ -369,8 +369,7 @@ export default class FormBuilder extends Component {
         <View>
           {this.generateFields() || <View />}
         </View>
-      </KeyboardAvoidingView>
-
+      </KeyboardAvoidingView >
     );
   }
 }
